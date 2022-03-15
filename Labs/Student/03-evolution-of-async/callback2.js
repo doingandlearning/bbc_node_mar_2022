@@ -9,6 +9,11 @@ function readFileThenDo(next) {
   });
 }
 // Hint use try..catch
-readFileThenDo((data) => {
-  console.log(data);
-});
+
+try {
+  readFileThenDo((data) => {
+    console.log(data);
+  });
+} catch (error) {
+  console.error(error);
+}

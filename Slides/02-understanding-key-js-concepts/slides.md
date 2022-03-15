@@ -174,8 +174,6 @@ const result = speak("Kevin")
 
 ---
 
----
-
 # Arrays
 
 <v-clicks>

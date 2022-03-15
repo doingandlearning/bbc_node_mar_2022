@@ -1,13 +1,18 @@
 const fs = require("fs");
 const zlib = require("zlib");
 
-// Load a file from disk using readFile and then compress it using the async 
+// Load a file from disk using readFile and then compress it using the async
 // zlib node library, use a promise chain to process this work.
-
 
 // TODO: Convert this to a Promise based function
 function zlibPromise(data) {
-  zlib.gzip(data, (error, result) => {
+  return new Promise((resolve, reject) => {
+    zlib.gzip(data, (error, result) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(result);
+    });
   });
 }
 
@@ -21,6 +26,7 @@ function readFile(filename, encoding) {
 }
 
 // TODO: Load the file, zip it and then print it to the screen.
-readFile("./support/demofile.txt", "utf-8")
-    .then(...) // --> Load it then zip it and then print it to screen
-});
+readFile("./support/demofile1.txt", "utf-8")
+  .then((data) => zlibPromise(data))
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error)); // --> Load it then zip it and then print it to screen
