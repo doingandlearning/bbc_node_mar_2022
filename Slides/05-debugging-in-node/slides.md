@@ -20,16 +20,7 @@ drawings:
   persist: false
 ---
 
-# Debugging and Error handling in Node.js
-
----
-
-# Morning 👋🏻
-
-As you arrive, could you:
-
-- Pull the changes from the repo
-- Think of a takeaway (learning, question, wondering) from our last day to share.
+# Debugging in Node.js
 
 ---
 

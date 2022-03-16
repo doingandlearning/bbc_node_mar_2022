@@ -24,6 +24,15 @@ drawings:
 
 ---
 
+# Morning 👋🏻
+
+As you arrive, could you:
+
+- Get today's slides and labs from the repo (https://github.com/doingandlearning/bbc_node_mar_2022)
+- Think of a takeaway (learning, question, wondering) from our Monday to share.
+
+---
+
 By the end of this section, you should be able to:
 
 - Generate a package.json
