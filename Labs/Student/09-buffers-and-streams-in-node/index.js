@@ -1,3 +1,4 @@
+// TODO: Download the data to this directory (https://drive.google.com/file/d/1_N9rDEMVxSMY1Rk7RZbNL7zrpWnugEkO/view?usp=sharing)
 // TODO: Initialize project and get it in module mode
 // TODO: Install csv-parse
 import { parse } from "csv-parse";
