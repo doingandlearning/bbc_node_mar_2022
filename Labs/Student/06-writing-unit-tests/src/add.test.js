@@ -4,6 +4,7 @@ const add = require("./add");
 test("Test that add returns the correct result from two numbers", () => {
   // ✅ Use the add function to add two numbers
   // ✅ Expect the value toBe the right value
+  expect(add(2, 2)).toBe(4);
 });
 
 // Exercise 2

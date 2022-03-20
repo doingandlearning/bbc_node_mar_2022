@@ -1,20 +1,34 @@
 // Part 1
 // Ticker: Write a function that accepts a number and a callback as the
 // arguments. The function will return an EventEmitter that emits an event
-// called tick every 50 milliseconds until the number of milliseconds is passed
+// called "tick" every 50 milliseconds until the number of milliseconds is passed
 // from the invocation of the function. The function will also call the callback
 // when the number of milliseconds has passed, providing, as the result, the
 // total count of tick events emitted. Hint: you can use setTimeout() to
 // schedule another setTimeout() recursively or you could use setInterval().
 
+const EventEmitter = require("events");
+
 function tickingTimer(ms, cb) {
-  // TODO: create event emitter
-  // TODO: Every 50ms emit a tick
-  // TODO: After `ms` milliseconds have passed, stop emitting
-  // and invoke the callback.
+  const ee = new EventEmitter();
+  let time = 0;
+
+  const interval = setInterval(() => {
+    time += 50;
+    if (time > ms) {
+      clearInterval(interval);
+      cb();
+      return;
+    }
+    ee.emit("tick", time);
+  }, 50);
+
+  return ee;
 }
 
-tickingTimer();
+tickingTimer(199, () => console.log("all done!")).on("tick", (time) =>
+  console.log("tick", time)
+);
 
 // Part 2
 // A simple modification:

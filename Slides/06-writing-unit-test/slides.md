@@ -436,6 +436,8 @@ We create a function called pseudoReq which is a very approximated emulation of 
 
 -->
 
+--- 
+
 # Promise based errors
 
 ```js

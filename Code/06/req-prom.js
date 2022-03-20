@@ -1,8 +1,13 @@
 "use strict";
-const { promisify } = require("util");
-const timeout = promisify(setTimeout);
+
+function sleep(ms) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(), ms);
+  });
+}
+
 module.exports = async (url) => {
-  await timeout(300);
+  await sleep(300);
   if (url === "http://error.com") throw Error("network error");
   return Buffer.from("some data");
 };

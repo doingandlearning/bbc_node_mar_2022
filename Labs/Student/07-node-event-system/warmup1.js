@@ -8,9 +8,7 @@ let count = 0;
 // TODO: Update this to only be called once
 ee.on("tick", listener);
 
-setInterval(() => {
-  ee.emit("tick");
-}, 100);
+ee.emit("tick");
 
 function listener() {
   count++;
