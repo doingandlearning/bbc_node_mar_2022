@@ -1,15 +1,6 @@
 import mongoose from "mongoose";
 
 /**
- * 2. create the 'Book' model following the schema requirements
- *
- * The schema should have the following properties:
- *
- * 2.1 title:
- *    2.1.1 required, error message of: "The title is required"
- *    2.1.2 string
- *    2.1.3 trim
- *
  * 2.2 author:
  *    2.2.1 required, error message of: "The author is required"
  *    2.2.2 string
@@ -26,7 +17,9 @@ import mongoose from "mongoose";
  * 2.5 with the "createdAt" and "updatedAt" properties that are created automatically
  */
 
-const BookSchema = new mongoose.Schema({});
+const BookSchema = new mongoose.Schema({
+  title: { type: String, trim: true, required: true },
+});
 
 const BookModel = new mongoose.model("book", BookSchema);
 

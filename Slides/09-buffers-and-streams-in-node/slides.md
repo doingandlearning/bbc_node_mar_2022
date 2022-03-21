@@ -26,10 +26,10 @@ drawings:
 
 # Good morning! 👋🏻
 
-Same deal as yesterday:
+Same deal as last time:
 
 - Pull down the repo with today's slides and exercises.
-- Have a think about a takeaway from last Monday.
+- Have a think about a takeaway from last Wednesday.
 
 ---
 
@@ -48,7 +48,7 @@ All of the APIs we've used so far have been in buffer mode. For an input operati
 
 ::right::
 
-<!-- <img src="./assets/buffer.png" /> -->
+<img src="/assets/buffer.png" />
 
 ---
 
@@ -142,6 +142,8 @@ The Buffer `toJSON` method returns a JS object to represent the Buffer in a JSON
 </v-clicks>
 
 ---
+layout: two-cols
+---
 
 # What about streams?
 
@@ -153,6 +155,10 @@ The Buffer `toJSON` method returns a JS object to represent the Buffer in a JSON
 - Streams allow us to process the data as soon as it arrives from the resource. As soon as data is received from the resource, it is immediately passed to the consumer. The consumer can choose to process the data now or wait until it is all finished.
 
 </v-clicks>
+
+::right::
+
+<img src="/assets/stream.png" />
 
 ---
 layout: two-cols
@@ -715,7 +721,8 @@ Just to make a practical example, let's imagine we are asked by a Fortune 500 co
 
 This is what the file might look like.
 
-```csv
+```
+
 type,country,profit
 Household,Namibia,597290.92
 Baby Food,Iceland,808579.10
@@ -725,6 +732,7 @@ Cereal,Malta,174965.25
 Meat,Indonesia,145402.40
 Household,Italy,728880.54
 [... many more lines]
+
 ```
 
 ---
@@ -771,8 +779,6 @@ export class FilterByCountry extends Transform {
 }
 
 ```
-
----
 
 <!--
 
@@ -823,6 +829,8 @@ In order to emit the final result when all the data has been processed, we have 
 
 -->
 
+---
+
 # PassThrough streams
 
 There is a fifth type of stream that is worth mentioning: PassThrough. This type of stream is a special type of Transform that outputs every data chunk without applying any transformation.
@@ -871,7 +879,7 @@ The beauty of this approach is that we didn't have to touch any of the other exi
 
 # Exercises
 
-On Kaggle, you can find a lot of interesting data sets, such as the London Crime Data (https://www.kaggle.com/jboysen/london-crime/). We've downloaded and gzipped a version of this data. It has a row for every crime reported and the following columns. The column headings are:
+On Kaggle, you can find a lot of interesting data sets, such as the London Crime Data (https://www.kaggle.com/jboysen/london-crime/). I've prepared gzipped a version of this data. It has a row for every crime reported and the following columns. The column headings are:
 
 - lsoa_code: code for Lower Super Output Area in Greater London.
 - borough: Common name for London borough.
@@ -883,5 +891,5 @@ On Kaggle, you can find a lot of interesting data sets, such as the London Crime
 
 Build a stream processing script that analyzes the data and tries to answer the following questions (or others of your choosing):
 
-• What is the most common crime in Croydon (lsoa_code = E01001116)?
-• Where is 'Fraud or Forgery' the most prevalent?
+- What is the most common crime in Croydon (lsoa_code = E01001116)?
+- Where is 'Fraud or Forgery' the most prevalent?

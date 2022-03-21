@@ -40,9 +40,13 @@ NoSQL databases (aka "not only SQL") store data differently than relational tabl
 <v-clicks>
 
 Handles Big Data
+
 Data Models - No predefined schema
+
 Data Structure - NoSQL handles unstructured data
+
 Cheaper to manage
+
 Scaling: Scale out
 
 </v-clicks>
@@ -615,6 +619,11 @@ Documents share the same fields and field types
 
 > With the mongoose ODM (Object Document Mapping) we can easily define schemas with validation, required fields, default values, and, of course relations between documents.
 
+---
+
+# Lab
+
+---
 
 
 # Using the MySQL library

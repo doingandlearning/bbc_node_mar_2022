@@ -1,14 +1,23 @@
 import { Readable } from "stream";
+import { createWriteStream } from "fs";
 
-const mountains = [
-  { name: "Everest", height: 8848 },
-  { name: "K2", height: 8611 },
-  { name: "Kangchenjunga", height: 8586 },
-  { name: "Lhotse", height: 8516 },
-  { name: "Makalu", height: 8481 },
-];
+const writer = createWriteStream("./stream.txt");
 
-const mountainsStream = Readable.from(mountains);
-mountainsStream.on("data", (mountain) => {
-  console.log(`${mountain.name.padStart(14)}\t${mountain.height}m`);
+writer.write("Hello", "utf8", (error) => {
+  console.log("data received");
 });
+writer.write("How are you?");
+writer.end();
+
+// const mountains = [
+//   { name: "Everest", height: 8848 },
+//   { name: "K2", height: 8611 },
+//   { name: "Kangchenjunga", height: 8586 },
+//   { name: "Lhotse", height: 8516 },
+//   { name: "Makalu", height: 8481 },
+// ];
+
+// const mountainsStream = Readable.from(mountains);
+// mountainsStream.on("data", (mountain) => {
+//   console.log(`${mountain.name.padStart(14)}\t${mountain.height}m`);
+// });

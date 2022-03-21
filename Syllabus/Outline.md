@@ -18,6 +18,5 @@
 
 - Buffers and Streams
 - Error handling
-- Interacting with the file system
-- Node.js and Databases
+- Node.js and MongoDB
 

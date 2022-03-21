@@ -1,36 +1,42 @@
-const EventEmitter = require("events");
+// Error Codes
 
-const myEmitter = new EventEmitter();
+// Custom Errors
 
-myEmitter.on("my-cool-event", (...args) => console.log(args));
-myEmitter.on("my-cool-event", () => console.log("they called my name"));
-myEmitter.prependListener("my-cool-event", () =>
-  console.log("I got called first")
-);
-myEmitter.prependListener("my-cool-event", () => console.log("No, I did"));
+function errorCodeCreator(message, code) {
+  const error = Error(message);
+  error.code = code;
+  return error;
+}
 
-myEmitter.on("error", () => console.log("There was an error."));
-myEmitter.emit("error");
+class MustBeNumber extends Error {
+  code = "ERR_MUST_BE_NUMBER";
 
-const listener = (a, b) => console.log(a + b);
+  constructor(message) {
+    super(message);
+  }
 
-myEmitter.on("add", listener);
-myEmitter.emit("add", 3, 4);
-myEmitter.emit("add", 3, 4);
+  get name() {
+    return `MustBeNumber (${this.code})`;
+  }
+}
 
-myEmitter.removeAllListeners();
+function doTask(num) {
+  if (typeof num !== "number") {
+    throw new MustBeNumber("Must be a number", "ERR_MUST_BE_NUMBER");
+  }
+  if (num <= 0) throw new RangeError("Number needs to be greater than zero.");
+  if (num % 2) throw new Error("Number needs to be even");
 
-myEmitter.emit("add", 4, 4);
+  return num / 2;
+}
 
-myEmitter.emit("my-cool-event");
-// myEmitter.on(
-//   "sum",
-//   (input, output) => `This array of numbers (${input}) sums to ${output}.`
-// );
-
-// function countNumbers(myEmitter, ...nums) {
-//   const result = nums.reduce((a, c) => a + c, 0);
-//   return myEmitter.emit("sum", nums, result);
-// }
-
-// countNumbers(myEmitter,1, 2, 3, 4, 5, 6);
+try {
+  const result = doTask(true);
+  console.log(result);
+} catch (error) {
+  if (error.code === "ERR_VALUE_MUST_BE_NUMBER") {
+    console.log("This a TypeError. Add one vote to the TypeScript migration.");
+  } else {
+    console.log("Unhandled error: ", error);
+  }
+}
